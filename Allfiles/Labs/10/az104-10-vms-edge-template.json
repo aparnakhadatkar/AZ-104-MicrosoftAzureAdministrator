@@ -56,7 +56,11 @@
         "2019-Datacenter",
         "2019-Datacenter-Server-Core",
         "2019-Datacenter-Server-Core-smalldisk"
-      ]},
+      ],
+      "metadata": {
+        "description": "Image SKU"
+      }
+    },
     "vmSize": {
       "type": "string",
       "defaultValue": "Standard_D2s_v3",
@@ -80,7 +84,7 @@
     },
     "virtualNetworkResourceGroup": {
       "type": "string",
-      "defaultValue": "az104-10-rg0",
+      "defaultValue": "az104-10-rg10",
       "metadata": {
         "description": "Resource group of the VNet"
       }
@@ -110,7 +114,7 @@
   "variables": {
     "vnetID": "[resourceId(parameters('virtualNetworkResourceGroup'), 'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
     "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworkName'), parameters('subnet0Name'))]",
-    "numberOfInstances": 2,
+    "numberOfInstances": 1,
     "computeAPIVersion": "2018-10-01",
     "networkAPIVersion": "2018-12-01"
   },
@@ -237,7 +241,7 @@
           "osDisk": {
             "createOption": "FromImage",
             "managedDisk": {
-              "storageAccountType": "Standard_LRS"
+               "storageAccountType": "Standard_LRS"
             }
           }
         },
@@ -248,33 +252,6 @@
             }
           ]
         }
-      }
-    },
-    {
-      "type": "Microsoft.Compute/virtualMachines/extensions",
-      "apiVersion": "2019-07-01",
-      "name": "[concat(parameters('vmNamePrefix'), copyindex(), '/customScriptExtension')]",
-      "location": "[resourceGroup().location]",
-      "dependsOn": [
-        "[concat(parameters('vmNamePrefix'), copyindex())]"
-      ],
-      "properties": {
-        "publisher": "Microsoft.Compute",
-        "type": "CustomScriptExtension",
-        "typeHandlerVersion": "1.8",
-        "autoUpgradeMinorVersion": true,
-        "settings": {
-          "fileUris": [
-            "https://raw.githubusercontent.com/CloudLabs-MOC/AZ-104-MicrosoftAzureAdministrator/Lab-Files/Allfiles/Labs/10/psscript.ps1"
-          ]
-        },
-        "protectedSettings": {
-          "commandToExecute": "[concat('powershell.exe -ExecutionPolicy Unrestricted -File psscript.ps1' )]"
-        }
-      },
-      "copy": {
-        "name": "cSELoop",
-        "count": "[variables('numberOfInstances')]"
       }
     }
   ]
