@@ -1,26 +1,27 @@
 # Lab 09b - Implement Azure Container Instances
 
-## Lab scenario
-Contoso wants to find a new platform for its virtualized workloads. You identified a number of container images that can be leveraged to accomplish this objective. Since you want to minimize container management, you plan to evaluate the use of Azure Container Instances for the deployment of Docker images.
+## Lab Overview
 
-**Note:** An **[interactive lab simulation](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%2014)** is available that allows you to click through this lab at your own pace. You may find slight differences between the interactive simulation and the hosted lab, but the core concepts and ideas being demonstrated are the same. 
+This lab focuses on deploying and managing Docker containers using Azure Container Instances (ACI). In this lab, you will learn how to deploy a Docker image onto Azure Container Instances, which offers a simple and efficient way to run containers without needing to manage the underlying infrastructure.
+
+## Interactive lab simulations
+
+There are interactive lab simulations that you might find useful for this topic. The simulation lets you to click through a similar scenario at your own pace. There are differences between the interactive simulation and this lab, but many of the core concepts are the same. An Azure subscription is not required.
+
++ [Deploy Azure Container Instances](https://mslearn.cloudguides.com/en-us/guides/AZ-900%20Exam%20Guide%20-%20Azure%20Fundamentals%20Exercise%203). Create, configure, and deploy a Docker container with Azure Container Instances.
+  
++ [Implement Azure Container Instances](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%2014).  Deploy a Docker image using Azure Container Instances. 
 
 ## Lab objectives
+
 In this lab, you will complete the following tasks:
 
 - Task 1: Deploy an Azure Container Instance using a Docker image
 - Task 2: Review the functionality of the Azure Container Instance
 
-## Estimated timing: 20 minutes
-
-## Architecture diagram
-
-![Diagram of the tasks.](./media/az104-lab09b-aci-architecture.png)
-
-## Exercise 1
-
 ### Task 1: Deploy an Azure Container Instance using a Docker image
-In this task, you will create a new container instance for the web application.
+
+In this task, you will create a new Azure Container Instance (ACI) for hosting a web application. Azure Container Instances allow you to run containers in the cloud without the need to manage the underlying virtual machines or infrastructure.
 
 1. In the Azure portal, search for locate **Container instances**.
 
@@ -32,28 +33,28 @@ In this task, you will create a new container instance for the web application.
 
     | Setting | Value |
     | ---- | ---- |
-    | Subscription | the name of the Azure subscription you are using in this lab |
+    | Subscription | Leave it as default |
     | Resource group | Select **az104-09b-rg1** |
     | Container name | **az104-9b-c1** |
-    | Region | the name of a region where you can provision Azure container instances |
+    | Region | **<inject key="Region" enableCopy="false" />** |
     | Image Source | **Quickstart images** |
     | Image | **mcr.microsoft.com/azuredocs/aci-helloworld:latest (Linux)** |
 
-    ![image](./media/l9-image23.png)
+    ![image](./media/az-104z1.png)
 
-1. On the **Networking** tab of the **Create container instance** blade, specify the following settings (leave others with their default values):
+1. On the **Networking** tab of the **Create container instance** blade, specify the following settings (leave others with their default values) and  click on **Next: Monitoring >**:
 
     | Setting | Value |
     | --- | --- |
     | DNS name label | any valid, globally unique DNS hostname |
 
-    ![image](./media/l9-image24.png)
+    ![image](./media/az-104z2.png)
 
     >**Note**: Your container will be publicly reachable at dns-name-label.region.azurecontainer.io. If you receive a **DNS name label not available** error message, specify a different value.
 
-1. Click **Next: Monitoring >** and uncheck **Enable container instance logs**. 
+1. Uncheck **Enable container instance logs**. 
 
-1. Click **Next: Advanced >**, review the settings on the **Advanced** tab of the **Create container instance** blade without making any changes, click **Review + Create**, ensure that the validation passed and click **Create**.
+1. Click **Next: Advanced** review the settings on the Advanced tab of the Create container instance blade without making any changes, click **Review + Create**, ensure that the validation passed and click **Create**.
 
     >**Note**: Wait for the deployment to complete. This should take about 3 minutes.
 
@@ -61,7 +62,7 @@ In this task, you will create a new container instance for the web application.
 
 ### Task 2: Review the functionality of the Azure Container Instance
 
-In this task, you will review the deployment of the container instance.
+In this task, you will review the deployment of the Azure Container Instance (ACI) to ensure it is running correctly and accessible. 
 
 1. On the deployment blade, click the **Go to resource** link.
 
@@ -91,7 +92,9 @@ In this task, you will review the deployment of the container instance.
    <validation step="bc3f7679-1e22-449c-b128-1561d970a81d" />
 
 ### Review
-In this lab, you have completed:
+
+In this lab, you have completed the following :
+
 - Deployed a Docker image by using the Azure Container Instance
 - Reviewed the functionality of the Azure Container Instance
 

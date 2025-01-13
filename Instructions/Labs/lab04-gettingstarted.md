@@ -1,4 +1,58 @@
-# Getting Started with Your AZ-104: Microsoft Azure Administrator Workshop
+# AZ-104: Microsoft Azure Administrator Workshop
+
+Welcome to your AZ-104: Microsoft Azure Administrator workshop! We've prepared a seamless environment for you to explore and learn Azure Services. Let's begin by making the most of this experience.
+
+# Lab 04 - Implement Virtual Networking
+
+### Overall Estimated Duration: 60 minutes
+
+## Overview
+
+In this lab, you will explore Azure's virtual networking capabilities by creating a virtual network with subnets to host Azure virtual machines, ensuring network segmentation and static IP assignments. You’ll configure Application Security Groups (ASGs) and Network Security Groups (NSGs) to secure and manage traffic, implement both public and private DNS zones for name resolution, and leverage Azure templates for efficient deployment. These exercises demonstrate how to deploy, secure, and manage scalable and resilient network infrastructure in Azure.
+
+## Objective
+
+By the end of this lab you will learn the following:
+
+1. **Create Virtual Networks**: Learn how to set up virtual networks (VNets), the backbone of Azure's networking infrastructure, to facilitate communication between resources securely and efficiently.
+
+2. **Establish secure communication**: Implement ASGs and NSGs to control traffic flow to and from Azure resources, enhancing security and network management.
+
+3. **Configure Public and Private DNS Zones**: Set up public DNS zones to resolve domain names accessible on the internet and private DNS zones for internal name resolution within the virtual network.
+
+4. **Apply Security Best Practices**: You will apply foundational security principles like network segmentation, traffic filtering, and secure name resolution.
+
+## Pre-requisites
+
+Familiarity with Azure networking fundamentals, including virtual networks (VNets), subnets, and security features like NSGs and ASGs, will help you complete the lab effectively.
+
+## Architecture
+
+In this hands-on lab, the architecture flow includes several essential components.
+
+1. Create and configure VNets and subnets to logically segment your Azure environment, ensuring isolation and efficient communication between resources.
+
+2. You’ll configure ASGs to control traffic flow between resources more efficiently and implement secure communication between specific resource groups.
+
+3. You’ll create and apply NSGs to VNets and subnets to enforce security policies, ensuring only authorized traffic is allowed.
+
+4. Configure DNS zones to enable seamless name resolution for Azure resources, distinguishing between public and private zones based on the use case.
+
+## Architecture diagram
+
+  ![image](../media/az104-lab04-architecture.png)
+
+## Explanation of Components
+
+1. **Virtual Networks (VNets)**: A VNet is a logically isolated network within Azure that allows resources like Virtual Machines (VMs) and Application Gateways to securely communicate with each other, the internet, and on-premises networks.
+
+2. **Network Security Groups (NSGs)**: NSGs are used to define and enforce security rules for controlling inbound and outbound network traffic to Azure resources. These rules are based on parameters such as IP addresses, ports, and protocols.
+
+3. **Application Security Groups (ASGs)**: ASGs allow you to group resources with similar security requirements and apply NSG rules to these groups rather than individual resources. This simplifies security management, especially in large deployments.
+
+4. **Public and Private DNS Zones**: Public DNS Zones are used to resolve names for resources exposed to the internet.Private DNS Zones are used to resolve names for internal resources within an Azure VNet.
+
+# Getting Started with the Lab
  
 Welcome to your AZ-104: Microsoft Azure Administrator  workshop! We've prepared a seamless environment for you to explore and learn Azure Services. Let's begin by making the most of this experience:
  
@@ -24,6 +78,12 @@ For convenience, you can open the lab guide in a separate window by selecting th
  
 ![Use the Split Window Feature](../media/split.png)
  
+## Utilizing the Zoom In/Out Feature
+
+To adjust the zoom level for the environment page, click the A↕ : 100% icon located next to the timer in the lab environment.
+
+![Use the Split Window Feature](./media/gs4.png)
+
 ## Managing Your Virtual Machine
  
 Feel free to start, stop, or restart your virtual machine as needed from the **Resources** tab. Your experience is in your hands!
@@ -70,11 +130,13 @@ Feel free to start, stop, or restart your virtual machine as needed from the **R
 
 1. If a **Welcome to Microsoft Azure** popup window appears, click **Cancel** to skip the tour.
     
-     ![](./media/gettingstarted-new-2.png)  
+     ![](./media/gettingstarted-new-2.png)   
 
 1. Click **Next** from the bottom right corner to embark on your Lab journey!
  
     ![Start Your Azure Journey](../media/num.png)
+
+In this hands-on lab, you'll learn to manage identity and access using Microsoft Entra ID, including creating and configuring users, groups, and tenants, and managing guest users. This will equip you with essential skills to efficiently handle identity and access in Azure.
 
 ## Support Contact
 

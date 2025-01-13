@@ -1,28 +1,34 @@
-# Lab 09a - Implement Web Apps
+# Lab 09: Implement Web Apps, Container Instances and Container Apps
 
-## Lab scenario
-You need to evaluate the use of Azure Web apps for hosting Contoso's websites, hosted currently in the company's on-premises data centers. The websites are running on Windows servers using PHP runtime stack. You also need to determine how you can implement DevOps practices by leveraging Azure web app deployment slots.
+## Lab Overview
 
-**Note:** An **[interactive lab simulation](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%2013)** is available that allows you to click through this lab at your own pace. You may find slight differences between the interactive simulation and the hosted lab, but the core concepts and ideas being demonstrated are the same. 
+In this lab, you will learn to create and configure Azure Web Apps to host websites, including setting the runtime stack and application settings. 
+
+## Interactive lab simulations
+
+There are interactive lab simulations that you might find useful for this topic. The simulation lets you to click through a similar scenario at your own pace. There are differences between the interactive simulation and this lab, but many of the core concepts are the same. An Azure subscription is not required.
+
++ [Create a web app](https://mslearn.cloudguides.com/en-us/guides/AZ-900%20Exam%20Guide%20-%20Azure%20Fundamentals%20Exercise%202). Create a web app that runs a Docker container.
+    
++ [Implement Azure web apps](https://mslabs.cloudguides.com/guides/AZ-104%20Exam%20Guide%20-%20Microsoft%20Azure%20Administrator%20Exercise%2013). Create an Azure web app, manage the deployment, and scale the app. 
 
 ## Lab objectives
+
 In this lab, you will complete the following tasks:
+
 + Task 1: Create and configure an Azure web app.
 + Task 2: Create and configure a deployment slot.
 + Task 3: Configure web app deployment settings.
 + Task 4: Swap deployment slots.
 + Task 5: Configure and test autoscaling of the Azure web app.
 
-## Estimated timing: 30 minutes
+## Exercise 1: Implement Web Apps
 
-## Architecture diagram
-
-![Diagram of the tasks.](./media/az104-lab09a-architecture.png)
-
-## Exercise 1
+This exercise involves creating, configuring, and managing Azure Web Apps for hosting websites with continuous integration, delivery, and autoscaling capabilities.
 
 ### Task 1: Create an Azure web app
-In this task, you will create an Azure web app.
+
+In this task, you will create an Azure Web App, which is a platform-as-a-service (PaaS) offering that allows you to deploy and manage web applications in a cloud environment. 
 
 1. In the Azure portal, search for and select **App services**, and, on the **App Services** blade.
 
@@ -32,7 +38,7 @@ In this task, you will create an Azure web app.
 
    ![image](./media/l9-image2.png)
    
-1. On the **Basics** tab , specify the following settings (leave others with their default values):
+1. On the **Basics** tab, specify the following settings (leave others with their default values):
 
     | Setting | Value |
     | --- | ---|
@@ -56,15 +62,18 @@ In this task, you will create an Azure web app.
 1. On the deployment blade, click **Go to resource**.
 
 ### Task 2: Create a staging deployment slot
-In this task, you will create a staging deployment slot.
+
+In this task, you will create a staging deployment slot in Azure Web Apps, which allows you to test new versions of your web application in a production-like environment without affecting the live production app.
 
 1. On the blade of the newly deployed web app, click the **Browse** tab to display the default web page in a new browser tab.
 
    ![image](./media/l9-image4.png)
 
+   >**Note**: While navigating to the link if you get an error,kindly try refreshing the browser window.
+ 
    >**Note**: Please copy the URL and save it in Notepad. You may need this link for Task 5.
 
-1. Close the new browser tab and, back in the Azure portal, in the **Deployment** section of the web app blade, click **Deployment slots**.
+1. Close the new browser tab and, back in the Azure portal, in the **Deployment** section in the left navigation pane of the web app blade, click **Deployment slots**.
 
     >**Note**: The web app, at this point, has a single deployment slot labeled **PRODUCTION**.
 
@@ -93,7 +102,7 @@ In this task, you will create a staging deployment slot.
 
 In this task, you will configure Web App deployment settings. Deployment settings allow for continuous deployment. This ensures that the app service has the latest version of the application.
 
-1. In the staging slot, select **Deployment Center** and then select **Settings**.
+1. In the staging slot, select **Deployment Center** from the left navigation pane  and then select **Settings**.
 
     >**Note:** Make sure you are on the staging slot blade (instead than the production slot).
     
@@ -117,9 +126,10 @@ In this task, you will configure Web App deployment settings. Deployment setting
 
     ![image](./media/l9-image9.png)
    
->**Note:** The deployment may take a minute. Be sure to **Refresh** the application page.
+    >**Note:** The deployment may take a minute. Be sure to **Refresh** the application page.
 
 ### Task 4: Swap the staging slots
+
 In this task, you will swap the staging slot with the production slot.
 
 1. Navigate to the **App Service**, then proceed to select the web app you previously created, directing you to the blade showcasing the production slot of the web application.
@@ -160,8 +170,10 @@ In this task, you will configure autoscaling of Azure Web App. Autoscaling enabl
 
 1. On **Create a load testing resource** blade specify the following:
 
-    + Select **+ Create** and give your load test name as **loadtest<inject key="DeploymentID" enableCopy="false" />**. The name must be unique.
-    + Select **Review + create** and then **Create**.
+    + Select **+ Create**  and leave the subscription (1) and resource group (2) option as default.
+    + Give your load test name as **loadtest<inject key="DeploymentID" enableCopy="false" />** (3). The name must be unique.
+    + Leave the region as default.(4)
+    + Select **Review + create** (5) and then **Create**.
 
      ![image](./media/l9-image17.png)
    
@@ -193,16 +205,20 @@ In this task, you will configure autoscaling of Azure Web App. Autoscaling enabl
    <validation step="fce39619-3758-4efe-b6d4-7060319a2f49" />
 
 ### Review
-In this lab, you have completed:
-+ Created an Azure web app
-+ Created a staging deployment slot
-+ Configured web app deployment settings
-+ Deployed code to the staging deployment slot
-+ Swapped the staging slots
-+ Configured and tested autoscaling of the Azure web app
+
+In this lab, you have completed the following:
+
+- Created an Azure web app: You set up an Azure web app to host your application, ensuring it is properly configured to run on Azure's platform with all necessary settings and environment configurations.
+- Created a staging deployment slot: You created a staging deployment slot for testing new versions of your app. This allowed you to deploy updates without affecting the live production version of your app, providing a controlled environment for 
+  validation before going live.
+- Configured web app deployment settings: You configured various deployment settings for your web app, including specifying deployment methods and automating the deployment process to streamline updates.
+- Deployed code to the staging deployment slot: You deployed a version of your code to the staging slot, allowing for testing and validation in a replica environment before pushing it to production.
+- Swapped the staging slots: After successfully testing the changes in the staging environment, you swapped the staging slot with the production slot, ensuring a smooth transition of the updated code into the live environment with minimal downtime.
+- Configured and tested autoscaling of the Azure web app: You configured autoscaling settings for your web app to automatically adjust resources based on traffic demand, and verified that the scaling mechanism works by simulating traffic surges and 
+  monitoring performance.
 
 ## Extend your learning with Copilot
-Copilot can assist you in learning how to use the Azure scripting tools. Copilot can also assist in areas not covered in the lab or where you need more information. Open an Edge browser and choose Copilot (top right) or navigate to *copilot.microsoft.com*. Take a few minutes to try these prompts.
+ Copilot can assist you in learning how to use the Azure scripting tools. Copilot can also assist in areas not covered in the lab or where you need more information. Open an Edge browser and choose Copilot (top right) or navigate to *copilot.microsoft.com*. Take a few minutes to try these prompts.
 
 + Summarize the steps to create and configure an Azure web app.
 + What are ways I can scale an Azure Web App?
